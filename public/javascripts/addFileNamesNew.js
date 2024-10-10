@@ -1,6 +1,17 @@
+document.addEventListener("DOMContentLoaded", function() {
+    var images= document.getElementById("image");
+    
+    images.addEventListener("change", function(event) {
+        previewMultiple(event); 
+    });
+});
+
+
 function previewMultiple(event) {
     var images = document.getElementById("image");
     var number = images.files.length;
+    var container = document.getElementById("formFile");
+    container.innerHTML = '';
     for (i = 0; i < number; i++) {
         var file = event.target.files[i];
         var urls = URL.createObjectURL(file);
@@ -17,5 +28,5 @@ function previewMultiple(event) {
         }
 
     }
-    document.getElementById("formFile").classList.add("text-center");
+    container.classList.add("text-center");
 }

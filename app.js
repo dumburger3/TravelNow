@@ -20,10 +20,10 @@ const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 
 const userRoutes = require('./routes/users');
-const campgroundRoutes = require('./routes/campgrounds');
+const travelLocoRoutes = require('./routes/travelLocos');
 const reviewRoutes = require('./routes/reviews');
 
-const dbUrl = process.env.DB_URL || 'mongodb://127.0.0.1:27017/yelp-camp';
+const dbUrl = 'mongodb://127.0.0.1:27017/travel-now';
 
 main().catch(err => {
     console.log("OH NO MONGO CONNECTION ERROR!!!");
@@ -31,7 +31,7 @@ main().catch(err => {
 });
 
 //process.env.DB_URL
-//'mongodb://127.0.0.1:27017/yelp-camp'
+//'mongodb://127.0.0.1:27017/travel-now'
 
 async function main() {
     await mongoose.connect(dbUrl);
@@ -144,8 +144,8 @@ app.use((req, res, next) => {
 })
 
 app.use('/', userRoutes);
-app.use('/campgrounds', campgroundRoutes);
-app.use('/campgrounds/:id/reviews', reviewRoutes);
+app.use('/travelLocos', travelLocoRoutes);
+app.use('/travelLocos/:id/reviews', reviewRoutes);
 
 
 app.get('/', (req, res) => {

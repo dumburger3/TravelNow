@@ -2,7 +2,7 @@ mapboxgl.accessToken = mapToken;
 const map = new mapboxgl.Map({
     container: 'map', // container ID
     style: 'mapbox://styles/mapbox/streets-v12', // style URL
-    center: campground.geometry.coordinates, // starting position [lng, lat]
+    center: travelLoco.geometry.coordinates, // starting position [lng, lat]
     zoom: 10, // starting zoom
 });
 
@@ -10,11 +10,11 @@ map.addControl(new mapboxgl.NavigationControl(), 'bottom-left');
 
 
 const marker = new mapboxgl.Marker()
-    .setLngLat(campground.geometry.coordinates)
+    .setLngLat(travelLoco.geometry.coordinates)
     .setPopup(
         new mapboxgl.Popup({offset: 25})
         .setHTML(
-            `<h3>${campground.title}</h2><p>${campground.location}</p>`
+            `<h3>${travelLoco.title}</h2><p>${travelLoco.location}</p>`
         )
     )
     .addTo(map)

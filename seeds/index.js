@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const cities = require('./cities');
 const { places, descriptors } = require('./seedHelpers');
-const Campground = require('../models/campground');
+const TravelLoco = require('../models/travelLoco');
 
 main().catch(err => {
     console.log("OH NO MONGO CONNECTION ERROR!!!");
@@ -9,18 +9,18 @@ main().catch(err => {
 });
 
 async function main() {
-    await mongoose.connect('mongodb://127.0.0.1:27017/yelp-camp');
+    await mongoose.connect('mongodb://127.0.0.1:27017/travel-now');
     console.log("MONGO CONNECTION OPEN!!!");
 }
 
 const sample = array => array[Math.floor(Math.random() * array.length)];
 
 const seedDB = async () => {
-    await Campground.deleteMany({});
+    await TravelLoco.deleteMany({});
     for (let i = 0; i < 300; i++) {
         const random1000 = Math.floor(Math.random() * 1000);
         const price = Math.floor(Math.random() * 20) + 10;
-        const camp = new Campground({
+        const camp = new TravelLoco({
             author: '6702015253126b3409d6f241',
             location: `${cities[random1000].city}, ${cities[random1000].state}`,
             title: `${sample(descriptors)} ${sample(places)}`,
