@@ -23,7 +23,7 @@ const userRoutes = require('./routes/users');
 const travelLocoRoutes = require('./routes/travelLocos');
 const reviewRoutes = require('./routes/reviews');
 
-const dbUrl = 'mongodb://127.0.0.1:27017/travel-now';
+const dbUrl = process.env.DB_URL || 'mongodb://127.0.0.1:27017/travel-now';
 
 main().catch(err => {
     console.log("OH NO MONGO CONNECTION ERROR!!!");
